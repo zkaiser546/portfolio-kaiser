@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: portfolio-kaiser
+    runtime: php
+    plan: free
+    buildCommand: composer install --no-dev --optimize-autoloader && npm ci && npm run build
+    startCommand: php artisan serve --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_URL
+        fromService:
+          type: web
+          name: portfolio-kaiser
+          property: url
+      - key: APP_KEY
+        generateValue: true
+      - key: SESSION_DRIVER
+        value: array
+      - key: CACHE_STORE
+        value: array
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: NODE_VERSION
+        value: "22"
+    healthCheckPath: /
