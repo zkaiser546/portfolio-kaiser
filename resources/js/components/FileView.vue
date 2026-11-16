@@ -165,6 +165,13 @@ const emit = defineEmits(['go']);
                 </ul>
             </template>
 
+            <template v-if="file.principles && file.principles.length">
+                <h2>Guiding principles</h2>
+                <ol class="principles">
+                    <li v-for="p in file.principles" :key="p">{{ p }}</li>
+                </ol>
+            </template>
+
             <template v-if="file.tools && file.tools.length">
                 <h2>Tools</h2>
                 <div class="meta"><span v-for="t in file.tools" :key="t" class="chip mono">{{ t }}</span></div>
@@ -173,9 +180,18 @@ const emit = defineEmits(['go']);
 
         <!-- Resume -->
         <template v-else-if="file.kind === 'resume'">
-            <p class="eyebrow">resume.pdf</p>
-            <h1>Experience &amp; skills</h1>
-            <p class="mute">{{ file.subtitle }}</p>
+            <div class="resume-head">
+                <div>
+                    <p class="eyebrow">resume.pdf</p>
+                    <h1>Experience &amp; skills</h1>
+                    <p class="mute">{{ file.subtitle }}</p>
+                </div>
+                <div class="resume-head-rail">
+                    <div class="cta" style="margin-top:0">
+                        <a class="btn" :href="file.pdf" download>Download PDF</a>
+                    </div>
+                </div>
+            </div>
             <div class="resume-grid">
                 <div class="resume-main">
                     <h2>Experience</h2>
@@ -191,12 +207,6 @@ const emit = defineEmits(['go']);
                     <p class="edu">{{ file.education }}</p>
                 </div>
                 <div class="side-rail">
-                    <div class="rail-block">
-                        <h2>Download</h2>
-                        <div class="cta" style="margin-top:0">
-                            <a class="btn" :href="file.pdf" download>Download PDF</a>
-                        </div>
-                    </div>
                     <div class="rail-block" v-if="file.skills && file.skills.length">
                         <h2>Technical skills</h2>
                         <ul class="skill-list">

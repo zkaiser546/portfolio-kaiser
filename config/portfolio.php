@@ -128,6 +128,11 @@ return [
                 ['Problem Solver', 'I look beyond the obvious and explore practical ways to improve existing processes.'],
                 ['Continuous Learner', 'I’m always exploring technologies, improving my skills, and learning through experience.'],
             ],
+            'principles' => [
+                'Ship it — a deployed system beats a perfect prototype.',
+                'Access control and security from the first line, not the last.',
+                'Offline-first, because real classrooms have real connectivity gaps.',
+            ],
             'tools' => ['Laravel', 'Vue', 'Flutter', 'Dart', 'PHP', 'Linux', 'MySQL', 'Firebase', 'Whisper AI', 'Figma', 'Git'],
         ],
 
