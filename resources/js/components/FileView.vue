@@ -124,7 +124,7 @@ const emit = defineEmits(['go']);
         <template v-else-if="file.kind === 'about'">
             <div class="about-head">
                 <img v-if="file.photo" class="about-photo" :src="file.photo" :alt="file.title" />
-                <div>
+                <div class="about-copy">
                     <p class="eyebrow">about.md</p>
                     <h1>About me</h1>
                     <p v-if="file.tagline" class="tagline">{{ file.tagline }}</p>
