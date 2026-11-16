@@ -216,7 +216,7 @@ const emit = defineEmits(['go']);
                 </div>
                 <div class="side-rail">
                     <div class="rail-block" v-if="file.skills && file.skills.length">
-                        <h2>Technical skills</h2>
+                        <h2>Skills</h2>
                         <ul class="skill-list">
                             <li v-for="s in file.skills" :key="s" class="chip">{{ s }}</li>
                         </ul>

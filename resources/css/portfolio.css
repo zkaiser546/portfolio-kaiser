@@ -608,10 +608,14 @@ ol.principles li::before {
 }
 
 /* ── Resume ───────────────────────────────────────── */
+:root {
+  --resume-cols: minmax(0, 1.5fr) minmax(240px, 1fr);
+  --resume-gap: clamp(28px, 4vw, 64px);
+}
 .resume-head {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(240px, 1fr);
-  gap: clamp(28px, 4vw, 64px);
+  grid-template-columns: var(--resume-cols);
+  gap: var(--resume-gap);
   align-items: start;
   margin-bottom: 8px;
 }
@@ -621,12 +625,14 @@ ol.principles li::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 28px;
+  width: 100%;
+  padding-top: clamp(36px, 5vw, 56px);
 }
+.resume-head-rail .btn { text-align: center }
 .resume-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(240px, 1fr);
-  gap: clamp(28px, 4vw, 64px);
+  grid-template-columns: var(--resume-cols);
+  gap: var(--resume-gap);
   align-items: start;
 }
 .job { padding: 0 0 28px; border-bottom: 1px solid var(--line); margin-bottom: 28px }
@@ -885,7 +891,7 @@ kbd {
   .hero-meta { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 20px; grid-template-columns: 1fr 1fr }
   .case-hero, .case-grid, .resume-grid, .contact-grid { grid-template-columns: 1fr }
   .resume-head { grid-template-columns: 1fr; gap: 12px }
-  .resume-head-rail { padding-top: 0; justify-content: flex-start }
+  .resume-head-rail { padding-top: 4px; justify-content: flex-start }
   .about-head { grid-template-columns: minmax(120px, 160px) minmax(0, 1fr) }
   .about-photo { min-height: 180px }
   .about-interests { grid-column: 1 / -1 }
