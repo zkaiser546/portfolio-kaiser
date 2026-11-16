@@ -123,13 +123,16 @@ const emit = defineEmits(['go']);
         <!-- About -->
         <template v-else-if="file.kind === 'about'">
             <div class="about-head">
-                <img v-if="file.photo" class="about-photo" :src="file.photo" :alt="file.title" />
+                <div class="about-side">
+                    <img v-if="file.photo" class="about-photo" :src="file.photo" :alt="file.title" />
+                    <p v-if="(file.bio || []).length" class="about-interests">{{ file.bio[0] }}</p>
+                </div>
                 <div class="about-copy">
                     <p class="eyebrow">about.md</p>
                     <h1>About me</h1>
                     <p v-if="file.tagline" class="tagline">{{ file.tagline }}</p>
                     <p class="lead">{{ file.intro }}</p>
-                    <p v-for="(b, i) in file.bio || []" :key="i" class="mute">{{ b }}</p>
+                    <p v-for="(b, i) in (file.bio || []).slice(1)" :key="i" class="mute">{{ b }}</p>
                     <p v-if="file.philosophy" class="philosophy">{{ file.philosophy }}</p>
                 </div>
             </div>
@@ -174,7 +177,7 @@ const emit = defineEmits(['go']);
 
             <template v-if="file.tools && file.tools.length">
                 <h2>Tools</h2>
-                <div class="meta"><span v-for="t in file.tools" :key="t" class="chip mono">{{ t }}</span></div>
+                <div class="meta tools-grid"><span v-for="t in file.tools" :key="t" class="chip mono">{{ t }}</span></div>
             </template>
         </template>
 
@@ -187,9 +190,7 @@ const emit = defineEmits(['go']);
                     <p class="mute">{{ file.subtitle }}</p>
                 </div>
                 <div class="resume-head-rail">
-                    <div class="cta" style="margin-top:0">
-                        <a class="btn" :href="file.pdf" download>Download PDF</a>
-                    </div>
+                    <a class="btn" :href="file.pdf" download>Download PDF</a>
                 </div>
             </div>
             <div class="resume-grid">

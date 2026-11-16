@@ -519,7 +519,19 @@ p { margin: 0 0 14px; max-width: 64ch }
 .side-block .val2 { display: block; margin: 0; font-size: 15px; line-height: 1.45 }
 .side-block dd.big { font: 600 26px/1.1 var(--hd); letter-spacing: -.02em; margin-top: 2px }
 
-.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px }
+.meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; width: 100% }
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.tools-grid .chip {
+  text-align: center;
+  justify-content: center;
+  padding: 8px 10px;
+}
 .chip {
   padding: 5px 12px;
   border-radius: 999px;
@@ -553,11 +565,11 @@ ul.list.plain li { padding-left: 0 }
 ul.list.plain li::before { display: none }
 
 /* Numbered principles */
-ol.principles { list-style: none; margin: 0; padding: 0; counter-reset: p; max-width: 64ch }
+ol.principles { list-style: none; margin: 0; padding: 0; counter-reset: p; max-width: none; width: 100% }
 ol.principles li {
   counter-increment: p;
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 48px minmax(0, 1fr);
   gap: 16px;
   padding: 18px 0;
   border-bottom: 1px solid var(--line);
@@ -573,14 +585,19 @@ ol.principles li::before {
 /* ── Resume ───────────────────────────────────────── */
 .resume-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(20px, 4vw, 48px);
+  grid-template-columns: minmax(0, 1.5fr) minmax(240px, 1fr);
+  gap: clamp(28px, 4vw, 64px);
   align-items: start;
   margin-bottom: 8px;
 }
 .resume-head h1 { margin-bottom: 10px }
 .resume-head .mute { max-width: none }
-.resume-head-rail { padding-top: 8px }
+.resume-head-rail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 28px;
+}
 .resume-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(240px, 1fr);
@@ -617,7 +634,13 @@ ol.principles li::before {
   background: var(--line);
   border: 1px solid var(--mute);
 }
-.side-rail { display: grid; gap: 28px; position: sticky; top: 8px }
+.side-rail {
+  display: grid;
+  gap: 28px;
+  position: sticky;
+  top: 24px;
+  align-self: start;
+}
 .rail-block h2 { margin-top: 0 }
 .skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none }
 .edu { font-size: 15px; line-height: 1.55; max-width: none }
@@ -662,15 +685,22 @@ ol.principles li::before {
 /* ── About ────────────────────────────────────────── */
 .about-head {
   display: grid;
-  grid-template-columns: minmax(160px, 260px) minmax(0, 1fr);
+  grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
   gap: clamp(24px, 3.5vw, 48px);
-  align-items: start;
+  align-items: stretch;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--line);
 }
+.about-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
 .about-photo {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  flex: 1;
+  min-height: 320px;
   height: auto;
   object-fit: cover;
   object-position: center 18%;
@@ -678,6 +708,12 @@ ol.principles li::before {
   border: 1px solid var(--line);
   display: block;
   background: var(--panel2);
+}
+.about-interests {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #5c5953;
 }
 .about-copy { min-width: 0 }
 .about-copy h1 { margin-bottom: 10px; max-width: none }
@@ -768,11 +804,12 @@ ol.principles li::before {
 }
 .qualities {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px 24px;
   margin: 0;
   padding: 0;
   list-style: none;
+  width: 100%;
 }
 .qualities li {
   border-top: 2px solid var(--ink);
@@ -819,8 +856,9 @@ kbd {
   .hero-meta { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 20px; grid-template-columns: 1fr 1fr }
   .case-hero, .case-grid, .resume-grid, .contact-grid { grid-template-columns: 1fr }
   .resume-head { grid-template-columns: 1fr; gap: 12px }
-  .resume-head-rail { padding-top: 0 }
+  .resume-head-rail { padding-top: 0; justify-content: flex-start }
   .about-head { grid-template-columns: minmax(120px, 160px) minmax(0, 1fr) }
+  .about-photo { min-height: 180px }
   .case-side, .side-rail { position: static }
 }
 @media (max-width: 760px) {
