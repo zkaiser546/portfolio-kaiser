@@ -13,6 +13,9 @@ const emit = defineEmits(['go']);
             <header class="hero">
                 <div>
                     <p class="eyebrow">Portfolio · 2026</p>
+                    <div v-if="file.now" class="now-badge" role="status">
+                        <i aria-hidden="true"></i>{{ file.now }}
+                    </div>
                     <h1>{{ file.headline }}</h1>
                     <p class="lead">{{ file.intro }}</p>
                     <div class="cta">
@@ -105,6 +108,10 @@ const emit = defineEmits(['go']);
                 <div class="case-main">
                     <h2>What I did</h2>
                     <ul class="list"><li v-for="d in file.did" :key="d">{{ d }}</li></ul>
+                    <div v-if="file.outcome" class="outcome">
+                        <span class="lab">Outcome</span>
+                        <p>{{ file.outcome }}</p>
+                    </div>
                     <div class="cta"><button class="btn" @click="emit('go', 'contact')">Talk about this project</button></div>
                 </div>
                 <dl class="case-side">
@@ -223,11 +230,14 @@ const emit = defineEmits(['go']);
                     </div>
                 </div>
             </div>
-            <template v-if="file.trainings && file.trainings.length">
+            <template v-if="file.trainings && Object.keys(file.trainings).length">
                 <h2>Trainings &amp; seminars</h2>
-                <ul class="list plain">
-                    <li v-for="t in file.trainings" :key="t" class="mute">{{ t }}</li>
-                </ul>
+                <div v-for="(items, year) in file.trainings" :key="year" class="training-year">
+                    <h3 class="training-year-label">{{ year }}</h3>
+                    <ul class="list plain">
+                        <li v-for="t in items" :key="t" class="mute">{{ t }}</li>
+                    </ul>
+                </div>
             </template>
         </template>
 

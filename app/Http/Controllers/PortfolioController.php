@@ -12,6 +12,10 @@ class PortfolioController extends Controller
     public function show(): JsonResponse
     {
         // All portfolio content lives in config/portfolio.php
-        return response()->json(config('portfolio'));
+        // JSON_UNESCAPED_UNICODE keeps curly quotes / dashes as real UTF-8.
+        return response()
+            ->json(config('portfolio'), 200, [
+                'Content-Type' => 'application/json; charset=UTF-8',
+            ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 }

@@ -15,6 +15,10 @@ RUN apt-get update \
     && docker-php-ext-install zip \
     && rm -rf /var/lib/apt/lists/*
 
+# Force UTF-8 so smart quotes / em dashes survive JSON responses
+RUN printf 'default_charset = "UTF-8"\nmbstring.language = neutral\n' \
+    > /usr/local/etc/php/conf.d/zz-utf8.ini
+
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY composer.json composer.lock ./
