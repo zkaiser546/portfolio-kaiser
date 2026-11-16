@@ -123,10 +123,7 @@ const emit = defineEmits(['go']);
         <!-- About -->
         <template v-else-if="file.kind === 'about'">
             <div class="about-head">
-                <div class="about-side">
-                    <img v-if="file.photo" class="about-photo" :src="file.photo" :alt="file.title" />
-                    <p v-if="(file.bio || []).length" class="about-interests">{{ file.bio[0] }}</p>
-                </div>
+                <img v-if="file.photo" class="about-photo" :src="file.photo" :alt="file.title" />
                 <div class="about-copy">
                     <p class="eyebrow">about.md</p>
                     <h1>About me</h1>
@@ -135,6 +132,7 @@ const emit = defineEmits(['go']);
                     <p v-for="(b, i) in (file.bio || []).slice(1)" :key="i" class="mute">{{ b }}</p>
                     <p v-if="file.philosophy" class="philosophy">{{ file.philosophy }}</p>
                 </div>
+                <p v-if="(file.bio || []).length" class="about-interests">{{ file.bio[0] }}</p>
             </div>
 
             <template v-if="file.tech && file.tech.length">
