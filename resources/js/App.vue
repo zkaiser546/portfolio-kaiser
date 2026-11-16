@@ -82,7 +82,6 @@ function onTreeKey(e) {
 
 <template>
     <Skeleton v-if="!data && !loadError" />
-    <a class="skip" href="#main-content">Skip to content</a>
     <div v-else-if="loadError" class="win sk-win">
         <aside aria-hidden="true">
             <div class="dots"><i></i><i></i><i></i></div>
@@ -101,6 +100,7 @@ function onTreeKey(e) {
         </main>
     </div>
     <div v-else class="win">
+        <a class="skip" href="#main-content">Skip to content</a>
         <div v-if="sidebarOpen" class="backdrop" aria-hidden="true" @click="sidebarOpen = false"></div>
         <aside :class="{ open: sidebarOpen }" aria-label="Portfolio explorer">
             <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
