@@ -61,7 +61,10 @@ function closeTab(id) {
 
 watch(current, async () => {
     await nextTick();
-    if (viewEl.value) viewEl.value.scrollTop = 0;
+    if (viewEl.value) {
+        viewEl.value.scrollTop = 0;
+        viewEl.value.focus({ preventScroll: true });
+    }
 });
 
 // Keyboard: arrows move through the tree, right/left open and close folders
@@ -79,6 +82,7 @@ function onTreeKey(e) {
 
 <template>
     <Skeleton v-if="!data && !loadError" />
+    <a class="skip" href="#main-content">Skip to content</a>
     <div v-else-if="loadError" class="win sk-win">
         <aside aria-hidden="true">
             <div class="dots"><i></i><i></i><i></i></div>
@@ -129,7 +133,7 @@ function onTreeKey(e) {
             </div>
         </aside>
 
-        <main>
+        <main id="main-content">
             <div class="top">
                 <button class="icon menu" aria-label="Open file explorer" @click="sidebarOpen = !sidebarOpen">Files</button>
                 <div class="crumb">
