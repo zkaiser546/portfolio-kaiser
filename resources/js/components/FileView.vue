@@ -127,15 +127,48 @@ const emit = defineEmits(['go']);
                 <div>
                     <p class="eyebrow">about.md</p>
                     <h1>About me</h1>
+                    <p v-if="file.tagline" class="tagline">{{ file.tagline }}</p>
                     <p class="lead">{{ file.intro }}</p>
+                    <p v-for="(b, i) in file.bio || []" :key="i" class="mute">{{ b }}</p>
+                    <p v-if="file.philosophy" class="philosophy">{{ file.philosophy }}</p>
                 </div>
             </div>
-            <h2>How I work</h2>
-            <ol class="principles">
-                <li v-for="p in file.principles" :key="p">{{ p }}</li>
-            </ol>
-            <h2>Tools</h2>
-            <div class="meta"><span v-for="t in file.tools" :key="t" class="chip mono">{{ t }}</span></div>
+
+            <template v-if="file.tech && file.tech.length">
+                <h2>Technical background</h2>
+                <dl class="tech-table">
+                    <div v-for="row in file.tech" :key="row[0]" class="tech-row">
+                        <dt>{{ row[0] }}</dt>
+                        <dd>{{ row[1] }}</dd>
+                    </div>
+                </dl>
+            </template>
+
+            <template v-if="file.workflow && file.workflow.length">
+                <h2>How I work</h2>
+                <p class="mute">From an idea to a working solution — curiosity, structure, and a focus on solving actual problems.</p>
+                <ol class="workflow">
+                    <li v-for="w in file.workflow" :key="w[0]">
+                        <b>{{ w[0] }}</b>
+                        <p>{{ w[1] }}</p>
+                    </li>
+                </ol>
+            </template>
+
+            <template v-if="file.qualities && file.qualities.length">
+                <h2>What defines me</h2>
+                <ul class="qualities">
+                    <li v-for="q in file.qualities" :key="q[0]">
+                        <b>{{ q[0] }}</b>
+                        <p>{{ q[1] }}</p>
+                    </li>
+                </ul>
+            </template>
+
+            <template v-if="file.tools && file.tools.length">
+                <h2>Tools</h2>
+                <div class="meta"><span v-for="t in file.tools" :key="t" class="chip mono">{{ t }}</span></div>
+            </template>
         </template>
 
         <!-- Resume -->
