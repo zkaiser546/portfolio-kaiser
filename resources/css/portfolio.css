@@ -741,12 +741,6 @@ ol.principles li::before {
   color: #5c5953;
   max-width: 72ch;
 }
-.about-philosophy {
-  grid-column: 1 / -1;
-  max-width: none;
-  width: 100%;
-  margin-top: 8px;
-}
 .about-copy { min-width: 0 }
 .about-copy h1 { margin-bottom: 10px; max-width: none }
 .about-copy .eyebrow { max-width: none }
@@ -982,7 +976,7 @@ kbd {
   .about-photo { border-radius: 10px }
   .about-copy h1 { font-size: clamp(28px, 7vw, 36px) }
   .tagline { font-size: 12px }
-  .about-interests, .about-philosophy { grid-column: 1 / -1; max-width: none }
+  .about-interests { grid-column: 1 / -1; max-width: none }
   .tech-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 0 }
   .workflow, .qualities { grid-template-columns: 1fr }
   .philosophy { font-size: 15px; padding: 14px 16px }

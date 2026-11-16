@@ -139,9 +139,9 @@ const emit = defineEmits(['go']);
                     <p v-if="file.tagline" class="tagline">{{ file.tagline }}</p>
                     <p class="lead">{{ file.intro }}</p>
                     <p v-for="(b, i) in (file.bio || []).slice(1)" :key="i" class="mute">{{ b }}</p>
+                    <p v-if="file.philosophy" class="philosophy">{{ file.philosophy }}</p>
                 </div>
                 <p v-if="(file.bio || []).length" class="about-interests">{{ file.bio[0] }}</p>
-                <p v-if="file.philosophy" class="philosophy about-philosophy">{{ file.philosophy }}</p>
             </div>
 
             <template v-if="file.tech && file.tech.length">
