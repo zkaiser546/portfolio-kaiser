@@ -427,8 +427,8 @@ p { margin: 0 0 14px; max-width: 64ch }
   display: block;
   width: 100%;
   height: min(52vh, 420px);
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: top center;
   background: var(--panel2);
   border: 1px solid var(--line);
   border-radius: 12px;
