@@ -104,6 +104,12 @@ const emit = defineEmits(['go']);
             <div v-else class="cover" :style="{ background: file.cover }">
                 <span>{{ file.title }}</span>
             </div>
+            <section v-if="file.gallery && file.gallery.length" class="case-shots" aria-label="Screenshots">
+                <figure v-for="s in file.gallery" :key="s.src">
+                    <img :src="s.src" :alt="s.alt" loading="lazy" decoding="async" />
+                    <figcaption>{{ s.caption }}</figcaption>
+                </figure>
+            </section>
             <div class="case-grid">
                 <div class="case-main">
                     <h2>What I did</h2>

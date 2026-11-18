@@ -191,6 +191,7 @@ main {
 .menu { display: none }
 .menu-close { display: none }
 .backdrop { display: none }
+.icon.menu { min-height: 36px }
 
 /* ── Tabs ─────────────────────────────────────────── */
 .tabs {
@@ -198,9 +199,13 @@ main {
   padding: 10px 14px 0;
   overflow-x: auto;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
   background: var(--panel2);
   border-bottom: 1px solid var(--line);
 }
+.tabs::-webkit-scrollbar { height: 4px }
+.tabs::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px }
 .tab {
   --tb: transparent;
   position: relative;
@@ -429,6 +434,28 @@ p { margin: 0 0 14px; max-width: 64ch }
   border-radius: 12px;
   margin: 0 0 32px;
   box-shadow: 0 12px 36px rgba(20, 16, 10, .08);
+}
+
+/* Case study screenshot gallery */
+.case-shots {
+  display: grid;
+  gap: 16px;
+  margin: 0 0 32px;
+}
+.case-shots figure { margin: 0 }
+.case-shots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel2);
+  box-shadow: 0 8px 24px rgba(20, 16, 10, .06);
+}
+.case-shots figcaption {
+  font: 12.5px/1.45 var(--mn);
+  color: var(--mute);
+  margin-top: 8px;
 }
 
 /* Desktop monitor mockup (sits in the hero left column) */
@@ -946,6 +973,7 @@ kbd {
   .about-photo { min-height: 180px }
   .about-interests { grid-column: 1 / -1 }
   .case-side, .side-rail { position: static }
+  .case-shots { gap: 14px }
 }
 @media (max-width: 760px) {
   body { padding: 0 }
@@ -1006,8 +1034,13 @@ kbd {
   .menu { display: inline-block }
   .top { padding: 8px 12px }
   .tabs { padding: 8px 8px 0 }
-  .tab { padding: 8px 12px; font-size: 13px }
-  .view { padding: 20px 16px 32px }
+  .tab { padding: 10px 12px; font-size: 13px; min-height: 40px }
+  .view {
+    padding: 20px 16px 32px;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+  }
   .view > div { max-width: 100% }
   h1 { font-size: clamp(28px, 8vw, 36px); max-width: none }
   .lead { font-size: 17px }
@@ -1023,12 +1056,15 @@ kbd {
   .strip > div:last-child { border-bottom: 0 }
   .strip b { font-size: 24px }
   .cta { margin: 18px 0 4px }
-  .btn { padding: 11px 18px; font-size: 14.5px }
+  .btn { padding: 11px 18px; font-size: 14.5px; min-height: 40px }
   .case-hero { gap: 20px }
+  .cover-top { height: min(36vh, 240px); object-fit: cover; margin-bottom: 24px }
+  .case-shots { gap: 12px; margin-bottom: 24px }
+  .case-shots figcaption { font-size: 12px }
   .phone { max-width: 240px }
   .contact-grid, .resume-grid { gap: 28px }
   .email-hero { font-size: clamp(18px, 5.5vw, 26px) }
-  .about-head { grid-template-columns: 160px minmax(0, 1fr); gap: 20px }
+  .about-head { grid-template-columns: 160px minmax(0, 1fr); gap: 14px }
   .about-photo { border-radius: 10px }
   .about-copy h1 { font-size: clamp(28px, 7vw, 36px) }
   .tagline { font-size: 12px }
@@ -1049,6 +1085,17 @@ kbd {
     justify-self: start;
   }
   .tools-grid { grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)) }
+  .case-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+  }
+  .case-side .side-block:first-child { grid-column: 1 / -1 }
+  .side-block dd.big { font-size: 22px }
+  .email-hero { word-break: break-all }
+  .hero-meta { gap: 10px 12px }
+  .hero-meta dd { font-size: 14px }
+  .tab { padding: 10px 10px }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important }

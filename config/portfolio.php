@@ -53,14 +53,20 @@ return [
 
         'opac' => [
             'title' => 'library-opac.sys', 'icon' => '📚', 'kind' => 'case', 'cover' => $grad('#0f2744', '#3d6fa5'),
-            'thumb' => null,
+            'thumb' => '/images/projects/opac-catalog.jpg',
+            'coverImage' => '/images/projects/opac-catalog.jpg',
+            'gallery' => [
+                ['src' => '/images/projects/opac-catalog.jpg', 'alt' => 'Public OPAC search with collection stats and recently updated books', 'caption' => 'Public catalog — search, stats & new arrivals'],
+                ['src' => '/images/projects/opac-dashboard.jpg', 'alt' => 'Staff dashboard with patrons, visitors, and daily logins vs logouts', 'caption' => 'Staff dashboard — logins vs logouts'],
+                ['src' => '/images/projects/opac-logger.jpg', 'alt' => 'Patron logger kiosk for library entry and exit via student ID or barcode', 'caption' => 'Patron logger — entry & exit'],
+            ],
             'tags' => ['PHP', 'OPAC', 'Library', 'Deployed'], 'role' => 'Developer & maintainer — USeP Tagum–Mabini Campus Library',
             'summary' => 'The public access catalog and login system now powering the University of Southeastern Philippines Tagum–Mabini Campus Library.',
             'outcome' => 'Patrons search the collection in real time; staff track every issue and return from one desk.',
             'stats' => [['Daily', 'campus patron use'], ['Full', 'catalog import / export'], ['QR', 'accession tagging & inventory']],
             'did' => [
                 'Patrons couldn’t reliably search the collection — built a full public access catalog with real-time availability.',
-                'Staff needed accountability — added login/logout session logging with a complete admin side for library staff.',
+                'Entry and exit went untracked — a patron logger records every visit by student ID or RFID/library barcode, with staff login/logout session logging on the admin side.',
                 'Catalogs lived in spreadsheets — shipped import/export, reports, and QR accession tagging for every item.',
                 'In-house borrowing was manual — issue and return books against imported student records from one desk.',
                 'Still maintained day-to-day as the campus library’s IT Specialist — Linux servers, network and all.',
