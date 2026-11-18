@@ -33,9 +33,9 @@ class PortfolioTest extends TestCase
         }
 
         $this->assertSame('/images/projects/ulrc-appointment.png', $response->json('files.ulrc.coverImage'));
-        $this->assertSame('/images/projects/opac-catalog.jpg', $response->json('files.opac.coverImage'));
-        $this->assertSame('/images/projects/opac-catalog.jpg', $response->json('files.opac.thumb'));
-        $this->assertCount(3, $response->json('files.opac.gallery'));
+        $this->assertSame('/images/projects/opac-logger.jpg', $response->json('files.opac.coverImage'));
+        $this->assertSame('/images/projects/opac-logger.jpg', $response->json('files.opac.thumb'));
+        $this->assertCount(2, $response->json('files.opac.gallery'));
         $this->assertSame('zakiser546@gmail.com', $response->json('files.contact.email'));
     }
 }

@@ -436,26 +436,29 @@ p { margin: 0 0 14px; max-width: 64ch }
   box-shadow: 0 12px 36px rgba(20, 16, 10, .08);
 }
 
-/* Case study screenshot gallery */
+/* Case study screenshot gallery — pair side-by-side, compact */
 .case-shots {
   display: grid;
-  gap: 16px;
-  margin: 0 0 32px;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 0 0 28px;
 }
-.case-shots figure { margin: 0 }
+.case-shots figure { margin: 0; min-width: 0 }
 .case-shots img {
   display: block;
   width: 100%;
-  height: auto;
-  border-radius: 12px;
+  height: min(28vh, 220px);
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 10px;
   border: 1px solid var(--line);
   background: var(--panel2);
-  box-shadow: 0 8px 24px rgba(20, 16, 10, .06);
+  box-shadow: 0 6px 18px rgba(20, 16, 10, .06);
 }
 .case-shots figcaption {
-  font: 12.5px/1.45 var(--mn);
+  font: 11.5px/1.4 var(--mn);
   color: var(--mute);
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 /* Desktop monitor mockup (sits in the hero left column) */
@@ -605,25 +608,27 @@ p { margin: 0 0 14px; max-width: 64ch }
   position: sticky;
   top: 8px;
   display: grid;
-  gap: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 14px;
   border-top: 2px solid var(--ink);
 }
+.case-side .side-block:first-child { grid-column: 1 / -1 }
 .side-block {
-  padding: 16px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--line);
 }
 .side-block dt,
 .side-block .lab {
   display: block;
-  font: 500 11px/1 var(--mn);
+  font: 500 10px/1 var(--mn);
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: .08em;
   color: var(--mute);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .side-block dd,
-.side-block .val2 { display: block; margin: 0; font-size: 15px; line-height: 1.45 }
-.side-block dd.big { font: 600 26px/1.1 var(--hd); letter-spacing: -.02em; margin-top: 2px }
+.side-block .val2 { display: block; margin: 0; font-size: 14px; line-height: 1.4 }
+.side-block dd.big { font: 600 20px/1.15 var(--hd); letter-spacing: -.02em; margin-top: 2px }
 
 .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; width: 100% }
 .tools-grid {
@@ -973,7 +978,7 @@ kbd {
   .about-photo { min-height: 180px }
   .about-interests { grid-column: 1 / -1 }
   .case-side, .side-rail { position: static }
-  .case-shots { gap: 14px }
+  .case-shots { gap: 12px }
 }
 @media (max-width: 760px) {
   body { padding: 0 }
@@ -1058,9 +1063,10 @@ kbd {
   .cta { margin: 18px 0 4px }
   .btn { padding: 11px 18px; font-size: 14.5px; min-height: 40px }
   .case-hero { gap: 20px }
-  .cover-top { height: min(36vh, 240px); object-fit: cover; margin-bottom: 24px }
-  .case-shots { gap: 12px; margin-bottom: 24px }
-  .case-shots figcaption { font-size: 12px }
+  .cover-top { height: min(36vh, 240px); object-fit: cover; margin-bottom: 20px }
+  .case-shots { gap: 10px; margin-bottom: 20px }
+  .case-shots img { height: min(22vh, 160px) }
+  .case-shots figcaption { font-size: 11px }
   .phone { max-width: 240px }
   .contact-grid, .resume-grid { gap: 28px }
   .email-hero { font-size: clamp(18px, 5.5vw, 26px) }
@@ -1085,17 +1091,11 @@ kbd {
     justify-self: start;
   }
   .tools-grid { grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)) }
-  .case-side {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 16px;
-  }
-  .case-side .side-block:first-child { grid-column: 1 / -1 }
-  .side-block dd.big { font-size: 22px }
   .email-hero { word-break: break-all }
   .hero-meta { gap: 10px 12px }
   .hero-meta dd { font-size: 14px }
   .tab { padding: 10px 10px }
+  .case-shots img { height: min(18vh, 130px) }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important }

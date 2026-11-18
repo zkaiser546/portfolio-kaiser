@@ -53,12 +53,11 @@ return [
 
         'opac' => [
             'title' => 'library-opac.sys', 'icon' => '📚', 'kind' => 'case', 'cover' => $grad('#0f2744', '#3d6fa5'),
-            'thumb' => '/images/projects/opac-catalog.jpg',
-            'coverImage' => '/images/projects/opac-catalog.jpg',
+            'thumb' => '/images/projects/opac-logger.jpg',
+            'coverImage' => '/images/projects/opac-logger.jpg',
             'gallery' => [
                 ['src' => '/images/projects/opac-catalog.jpg', 'alt' => 'Public OPAC search with collection stats and recently updated books', 'caption' => 'Public catalog — search, stats & new arrivals'],
                 ['src' => '/images/projects/opac-dashboard.jpg', 'alt' => 'Staff dashboard with patrons, visitors, and daily logins vs logouts', 'caption' => 'Staff dashboard — logins vs logouts'],
-                ['src' => '/images/projects/opac-logger.jpg', 'alt' => 'Patron logger kiosk for library entry and exit via student ID or barcode', 'caption' => 'Patron logger — entry & exit'],
             ],
             'tags' => ['PHP', 'OPAC', 'Library', 'Deployed'], 'role' => 'Developer & maintainer — USeP Tagum–Mabini Campus Library',
             'summary' => 'The public access catalog and login system now powering the University of Southeastern Philippines Tagum–Mabini Campus Library.',
